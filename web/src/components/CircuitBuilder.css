@@ -1,0 +1,191 @@
+.circuit-builder {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Gate Palette */
+.gate-palette {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.gate-palette h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.gates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.gate-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--surface-light);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.gate-button:hover {
+  background: var(--gate-color);
+  transform: scale(1.05);
+  border-color: var(--gate-color);
+}
+
+.gate-button.selected {
+  background: var(--gate-color);
+  border-color: white;
+  box-shadow: 0 0 20px var(--gate-color);
+}
+
+.gate-symbol {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+}
+
+.gate-name {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.hint {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* Circuit Grid */
+.circuit-grid {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.qubit-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-right: 1rem;
+  border-right: 2px solid var(--border);
+}
+
+.qubit-label {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent);
+  font-family: 'Courier New', monospace;
+}
+
+.circuit-columns {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.circuit-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.circuit-cell {
+  width: 60px;
+  height: 60px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.circuit-cell::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: var(--border);
+  left: -100%;
+  z-index: -1;
+}
+
+.circuit-cell.hovered:not(.has-gate) {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: var(--primary);
+  border-style: dashed;
+}
+
+.circuit-cell.has-gate {
+  background: var(--gate-color);
+  border-color: var(--gate-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.gate {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+/* Actions */
+.circuit-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.simulate-btn {
+  background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+}
+
+.simulate-btn:hover {
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.6);
+}
+
+/* Scrollbar */
+.circuit-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.circuit-grid::-webkit-scrollbar-track {
+  background: var(--surface);
+  border-radius: 4px;
+}
+
+.circuit-grid::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+.circuit-grid::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
